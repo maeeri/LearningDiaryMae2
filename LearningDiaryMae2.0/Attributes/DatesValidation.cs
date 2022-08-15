@@ -62,6 +62,11 @@ namespace LearningDiaryMae2.Attributes
 
             var valThis = (IComparable)value;
 
+            if (valThis == null)
+            {
+                return ValidationResult.Success;
+            }
+
             if ((_compareType == CompareType.GreaterThan && valThis.CompareTo(valOther) <= 0) ||
                 (_compareType == CompareType.GreaterThanOrEqualTo && valThis.CompareTo(valOther) < 0) ||
                 (_compareType == CompareType.LessThan && valThis.CompareTo(valOther) >= 0) ||

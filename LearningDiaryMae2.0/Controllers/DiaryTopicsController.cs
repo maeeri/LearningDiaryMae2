@@ -202,7 +202,7 @@ namespace LearningDiaryMae2.Views
             if (!String.IsNullOrEmpty(searchString))
             {
                 var viewModel = new ViewModel();
-                viewModel.Topics = topics.Where(t => t.Title!.Contains(searchString)).ToList();
+                viewModel.Topics = await topics.Where(t => t.Title!.Contains(searchString)).ToListAsync();
                 return View(viewModel);
             }
 
@@ -217,7 +217,7 @@ namespace LearningDiaryMae2.Views
         //gets all diarytopics from database
         public async Task<List<DiaryTopic>> GetTopics()
         {
-            var topics = _context.DiaryTopic.Select(topic => topic).ToList();
+            var topics = await _context.DiaryTopic.Select(topic => topic).ToListAsync();
             return topics;
         }
 
@@ -311,7 +311,7 @@ namespace LearningDiaryMae2.Views
         //gets all diarytasks related to a specific diarytopic
         public async Task<List<DiaryTask>> GetTasks(int? topicId)
         {
-            var tasks = _context.DiaryTask.Where(task => task.DiaryTopic.Equals(topicId)).Select(task => task).ToList();
+            var tasks = await _context.DiaryTask.Where(task => task.DiaryTopic.Equals(topicId)).Select(task => task).ToListAsync();
             return tasks;
         }
     }
