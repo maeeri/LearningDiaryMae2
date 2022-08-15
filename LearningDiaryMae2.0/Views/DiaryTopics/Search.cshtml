@@ -1,0 +1,26 @@
+﻿@* search for topics by title *@
+
+@model LearningDiaryMae2.Models.ViewModel
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+
+<div class="container box" style="padding-bottom: 20%;">
+    <h1>Search for topics</h1>
+    <div class="col-12 col-md-4" style="margin: 0 auto; margin-bottom: 2em;">
+        <p>Type the title of the topic you are looking for.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-12 col-md-4 col-lg-6">
+            <form asp-controller="DiaryTopics" asp-action="SearchResults">
+                <div>
+                    Title: <input id="search-bar" class="input" type="text" name="SearchString"/>
+                    <input class="search-button" type="submit" value="Search"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

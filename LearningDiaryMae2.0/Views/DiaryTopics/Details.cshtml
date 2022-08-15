@@ -1,0 +1,188 @@
+﻿@* Shows details of a specific topic and related tasks *@
+
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="container box">
+    <h1>Details</h1>
+    <div class="row">
+        <div class=" col-12 col-md-6 box-white" style="margin: 0 auto; width: fit-content">
+            <div style="font-size: x-large">
+                <b>@Html.DisplayFor(model => model.Topic.Title)</b>
+                <div class=" float-right">
+                    <a asp-action="Edit" asp-route-id="@Model.Topic.Id">
+                        <span title="edit topic">
+                            <i class="fa-regular fa-pen-to-square" aria-label="Edit topic" style="font-size: x-large"></i>
+                        </span>
+                    </a>
+                    <a asp-controller="DiaryTopics" asp-action="CreateTask" asp-route-topicId="@Model.Topic.Id">
+                        <span title="add a task">
+                            <i class="fa-solid fa-plus" aria-label="Add a task"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <table class="col-10">
+                    <tr>
+                        <td class="col-sm-6">
+                            <b>@Html.DisplayNameFor(model => model.Topic.Done)</b>
+                        </td>
+                        <td class="col-sm-6">
+                            @if (Model.Topic.Done)
+                            {
+                                <i class="fa-regular fa-square-check" aria-label="yes"></i>
+                            }
+                            else
+                            {
+                                <i class="fa-regular fa-square" aria-label="no"></i>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-6">
+                            <b>@Html.DisplayNameFor(model => model.Topic.Description)</b>
+                        </td>
+                        <td class="col-6 second-column">
+                            @Html.DisplayFor(model => model.Topic.Description)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-6">
+                            <b>@Html.DisplayNameFor(model => model.Topic.EstimatedTimeToMaster)</b>
+                        </td>
+                        <td class="col-6 second-column">
+                            @Html.DisplayFor(model => model.Topic.EstimatedTimeToMaster) days
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-6">
+                            <b>@Html.DisplayNameFor(model => model.Topic.Source)</b>
+                        </td>
+                        <td class="col-6 second-column">
+                            @Html.DisplayFor(model => model.Topic.Source)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-6">
+                            <b>@Html.DisplayNameFor(model => model.Topic.StartLearningDate)</b>
+                        </td>
+                        <td class="col-6 second-column">
+                            @Html.DisplayFor(model => model.Topic.StartLearningDate)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-6">
+                            <b>@Html.DisplayNameFor(model => model.Topic.CompletionDate)</b>
+                        </td>
+                        <td class="col-6 second-column">
+                            @Html.DisplayFor(model => model.Topic.CompletionDate)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-6">
+                            <b>@Html.DisplayNameFor(model => model.Topic.TimeSpent)</b>
+                        </td>
+                        <td class="col-6 second-column">
+                            @Html.DisplayFor(model => model.Topic.TimeSpent) days
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-6">
+                            <b>@Html.DisplayNameFor(model => model.Topic.LastEditDate)</b>
+                        </td>
+                        <td class="col-6 second-column">
+                            @Html.DisplayFor(model => model.Topic.LastEditDate)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h4>To do:</h4>
+        <hr/>
+        <div class="row">
+            @foreach (var task in Model.Tasks)
+            {
+                <div class="box-white">
+                    <a asp-action="EditTask" asp-route-id="@task.Id">
+                        <span title="edit task">
+                            <i class="fa-regular fa-pen-to-square float-right" aria-label="edit task"></i>
+                        </span>
+                    </a>
+                    <table class="col-12 col-md-3">
+                        <tr>
+                            <td class="col-12 col-md-3">
+                                <b>@task.Title</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>@Html.DisplayNameFor(model => model.Task.Description)</b>
+                            </td>
+                            <td class="second-column">
+                                @task.Description
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>@Html.DisplayNameFor(model => model.Task.Priority)</b>
+                            </td>
+                            <td class="second-column">
+                                @if (task.Priority == 1)
+                                {
+                                    <p>High</p>
+                                }
+                                else if (task.Priority == 2)
+                                {
+                                    <p>Medium</p>
+                                }
+                                else
+                                {
+                                    <p>Low</p>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>@Html.DisplayNameFor(model => model.Task.Deadline)</b>
+                            </td>
+                            <td class="second-column">
+                                @($"{task.Deadline: d/M/yyyy}")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>@Html.DisplayNameFor(model => model.Task.Done)</b>
+                            </td>
+                            <td class="second-column">
+                                @if (task.Done)
+                                {
+                                    <i class="fa-regular fa-square-check" aria-label="yes"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa-regular fa-square" aria-label="no"></i>
+                                }
+                            </td>
+                        </tr>
+
+                    </table>
+
+
+                </div>
+            }
+        </div>
+    </div>
+
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

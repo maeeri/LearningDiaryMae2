@@ -1,0 +1,61 @@
+﻿@* to edit a diarytopic *@
+
+@model LearningDiaryMae2.Models.ViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container box">
+    <h1>Edit topic</h1>
+    
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Topic.Id" />
+                <div class="form-group">
+                    <label asp-for="Topic.Title" class="control-label"></label>
+                    <input asp-for="Topic.Title" class="form-control" />
+                    <span asp-validation-for="Topic.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Topic.Description" class="control-label"></label>
+                    <input asp-for="Topic.Description" class="form-control" />
+                    <span asp-validation-for="Topic.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Topic.EstimatedTimeToMaster" class="control-label"></label>
+                    <input asp-for="Topic.EstimatedTimeToMaster" class="form-control" />
+                    <span asp-validation-for="Topic.EstimatedTimeToMaster" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Topic.Source" class="control-label"></label>
+                    <input asp-for="Topic.Source" class="form-control" />
+                    <span asp-validation-for="Topic.Source" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Topic.StartLearningDate" class="control-label"></label>
+                    <input asp-for="Topic.StartLearningDate" type="date" class="form-control" />
+                    <span asp-validation-for="Topic.StartLearningDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Topic.CompletionDate" class="control-label"></label>
+                    <input asp-for="Topic.CompletionDate" type="date" class="form-control" />
+                    <span asp-validation-for="Topic.CompletionDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

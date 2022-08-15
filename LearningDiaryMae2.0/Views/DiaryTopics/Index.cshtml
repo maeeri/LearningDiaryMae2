@@ -1,0 +1,82 @@
+﻿@* list of all topics *@
+
+@model LearningDiaryMae2.Models.ViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container box">
+    <h1>Topics</h1>
+    <p class="col-12 col-md-6" style="margin: 0 auto; margin-bottom: 2em;">Here's a list of your study topics. You can add a new topic by clicking the green icon on the top right corner of the table below. You can add a task, edit or delete the topic or go to its details by clicking the icons next to the topic title.</p>
+    <div class="row" style="margin: 0 auto">
+        <div class="col-12 col-md-4">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6" style="margin: 0 auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Done
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Topic.Title)
+                        </th>
+                        <th style="font-size: 1.25em; text-align: right;">
+                            <a asp-action="Create">
+                                <span title="add a topic">
+                                    <i class="fa-solid fa-plus"></i>
+                                </span>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Topics)
+                    {
+                        <tr>
+                            <td>
+                                @if (item.InProgress == false)
+                                {
+                                    <i class="fa-regular fa-square-check"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa-regular fa-square"></i>
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td style="text-align: right">
+                                <a asp-controller="DiaryTopics" asp-action="CreateTask" asp-route-topicId="@item.Id">
+                                    <span title="add a task">
+                                        <i class="fa-solid fa-plus" aria-label="add a task"></i>
+                                    </span>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@item.Id">
+                                    <span title="edit topic">
+                                        <i class="fa-regular fa-pen-to-square" aria-label="edit topic"></i>
+                                    </span>
+                                </a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">
+                                    <span title="details">
+                                        <i class="fa-solid fa-bars" aria-label="details"></i>
+                                    </span>
+                                </a> |
+                                <a asp-action="Delete" onclick="return confirm('Are you sure you want to delete the topic and all related tasks?')" asp-route-id="@item.Id">
+                                    <span title="delete topic">
+                                        <i class="fa-solid fa-trash" aria-label="delete topic"></i>
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@* to create a topic *@
+
+@using Microsoft.AspNetCore.Components.Forms
+@model LearningDiaryMae2.Models.ViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container box" style="text-align: center">
+    <h1>Create</h1>
+
+    <h4>Topic</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4 box-white" style="margin: 0 auto;">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Topic.Title" class="control-label"></label>
+                    <input asp-for="Topic.Title" class="form-control" placeholder="Title" />
+                    <span asp-validation-for="Topic.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Topic.Description" class="control-label"></label>
+                    <input asp-for="Topic.Description" class="form-control" placeholder="Description" />
+                    <span asp-validation-for="Topic.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Topic.EstimatedTimeToMaster" class="control-label">How many days will it take</label>
+                    <input asp-for="Topic.EstimatedTimeToMaster" class="form-control" placeholder="Days to master" />
+                    <span asp-validation-for="Topic.EstimatedTimeToMaster" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Topic.Source" class="control-label">Source of study</label>
+                    <input asp-for="Topic.Source" class="form-control" placeholder="Source" />
+                    <span asp-validation-for="Topic.Source" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Topic.StartLearningDate" class="control-label">Started learning</label>
+                    <input type="date" asp-for="Topic.StartLearningDate" class="form-control" placeholder="" />
+                    <span asp-validation-for="Topic.StartLearningDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Topic.CompletionDate" class="control-label">Finished with topic</label>
+                    <input type="date" asp-for="Topic.CompletionDate" class="form-control" />
+                    <span asp-validation-for="Topic.CompletionDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Go to topics list</a> | 
+        <a asp-action="Index" asp-controller="Home">Go to home page</a>
+    </div>
+
+    @section Scripts {
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    }
+
+</div>

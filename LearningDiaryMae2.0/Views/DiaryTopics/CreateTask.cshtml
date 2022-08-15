@@ -1,0 +1,66 @@
+﻿@* to create a task related to a specific topic *@
+
+@using System.Diagnostics.Tracing
+@using System.Security.Cryptography.X509Certificates
+@model LearningDiaryMae2.Models.ViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container box" style="text-align: center">
+    <h1>Add a task</h1>
+    <h4>Topic: @Html.DisplayFor(model => model.Topic.Title)</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4 box-white" style="margin: 0 auto;">
+            <form asp-controller="DiaryTopics" asp-action="CreateTask">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Topic.Id" />
+                <div class="form-group">
+                    <label asp-for="Task.Title" class="control-label"></label>
+                    <input asp-for="Task.Title" class="form-control" />
+                    <span asp-validation-for="Task.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Task.Description" class="control-label"></label>
+                    <input asp-for="Task.Description" class="form-control" />
+                    <span asp-validation-for="Task.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Task.Deadline" class="control-label"></label>
+                    <input asp-for="Task.Deadline" type="date" class="form-control" />
+                    <span asp-validation-for="Task.Deadline" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Task.Priority" class="control-label"></label><br />
+                    <input type="radio" name="Task.Priority" value="1" /> High<br />
+                    <input type="radio" name="Task.Priority" value="2" /> Medium<br />
+                    <input type="radio" name="Task.Priority" value="3" /> Low<br />
+                    <span asp-validation-for="Task.Priority" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Task.Done" class="control-label"></label><br />
+                    <input type="radio" name="Task.Done" value="true" /> Yes<br />
+                    <input type="radio" name="Task.Done" value="false" /> No<br />
+                    <span asp-validation-for="Task.Done" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="CreateTask" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-controller="DiaryTopics" asp-action="Index">Back to List</a> | 
+        <a asp-controller="DiaryTopics" asp-action="Details" asp-route-id="@Model.Topic.Id">Back to Topic details</a>
+    </div>
+
+    @section Scripts {
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    }
+
+</div>

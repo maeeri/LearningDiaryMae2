@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-LearningDiaryMae2._0-4CDD0152-4116-45D2-A508-90F7FF00E1F0</UserSecretsId>
+    <RootNamespace>LearningDiaryMae2._0</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20220803071136_First.cs" />
+    <Compile Remove="Data\Migrations\20220803071136_First.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220804084611_Changed model.cs" />
+    <Compile Remove="Data\Migrations\20220804084611_Changed model.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220804104217_NewTry.cs" />
+    <Compile Remove="Data\Migrations\20220804104217_NewTry.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220804104355_New.cs" />
+    <Compile Remove="Data\Migrations\20220804104355_New.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220804120216_Again.cs" />
+    <Compile Remove="Data\Migrations\20220804120216_Again.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNet.WebPages" Version="3.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.25" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.25" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.25" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ClassLibraryDateMethods">
+      <HintPath>..\..\..\Week4\Class Library Datemethods\bin\Debug\netcoreapp3.1\ClassLibraryDateMethods.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

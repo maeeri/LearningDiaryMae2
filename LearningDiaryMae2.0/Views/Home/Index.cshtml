@@ -1,0 +1,49 @@
+﻿@* home page *@
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center col-12">
+    <h1 class="display-4 text-shade">Learning Diary</h1>
+</div>
+<div class="row align-content-center">
+    <div class="col-lg-4 flex-column">
+        <div class="card" style="width: 18rem;">
+            <a asp-action="Index" asp-controller="DiaryTopics">
+                <img class="card-img-top" src="/lib/Media/img/annie-spratt-_dAnK9GJvdY-unsplash.png" alt="book pages">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Go to your topics
+                    </h5>
+                    <p class="card-text">Here you can find a list of your study topics</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-4 flex-column">
+        <div class="card" style="width: 18rem;">
+            <a asp-action="Search" asp-controller="DiaryTopics">
+                <img class="card-img-top" src="/lib/Media/img/elnaz-asadi-DWpXAHmXtpU-unsplash.jpg" alt="computer, notebook and pens">
+                <div class="card-body">
+                    <h5 class="card-title">Search for topics</h5>
+                    <p class="card-text">Here you can search for specific study topics</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-4 flex-column">
+        <div class="card" style="width: 18rem;">
+            <a asp-action="Create" asp-controller="DiaryTopics">
+                <img class="card-img-top" src="/lib/Media/img/jess-bailey-HyoRyMAVpNA-unsplash.png" alt="paper, eyeglasses, pencils">
+                <div class="card-body">
+                    <h5 class="card-title">Add a new topic</h5>
+                    <p class="card-text">Here you can add a topic of study</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col">
+
+    </div>
+</div>
